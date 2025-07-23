@@ -21,3 +21,7 @@ pnpm install
 # Start development server
 pnpm run dev
 ```
+
+## CSS 嵌套支持
+
+> vite官方文档描述：由于 Vite 的目标仅为现代浏览器，因此建议使用原生 CSS 变量和实现 CSSWG 草案的 PostCSS 插件（例如 postcss-nesting）来编写简单的、符合未来标准的 CSS。
