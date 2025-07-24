@@ -5,6 +5,7 @@ export default antfu({
   unocss: true,
 }, {
   rules: {
+    'no-console': 'warn',
     /* Allow start with _ */
     '@typescript-eslint/no-unused-vars': [
       'error',
