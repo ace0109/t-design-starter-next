@@ -1,8 +1,8 @@
 {
   "name": "t-design-starter-next",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
   "engines": {
     "node": ">=22.0.0",
     "pnpm": ">=8.0.0"
@@ -30,6 +30,7 @@
     "postcss": "^8.5.6",
     "postcss-nesting": "^13.0.2",
     "typescript": "~5.8.3",
+    "unocss": "^66.3.3",
     "vite": "^7.0.4",
     "vue-tsc": "^2.2.12"
   }

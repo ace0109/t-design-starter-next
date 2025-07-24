@@ -5,6 +5,19 @@ export default antfu({
   unocss: true,
 }, {
   rules: {
-    'n/prefer-global/process': ['never'], // 关闭const CWD = process.cwd()报错
+    /* Allow start with _ */
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+      },
+    ],
+    'vue/no-unused-vars': [
+      'error',
+      {
+        ignorePattern: '^_',
+      },
+    ],
   },
 })

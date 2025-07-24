@@ -1,86 +1,106 @@
 <script setup lang="tsx">
-import { ref } from "vue";
+import type { PrimaryTableCol } from 'tdesign-vue-next'
+import type { VNode } from 'vue'
 
 import {
-  ErrorCircleFilledIcon,
   CheckCircleFilledIcon,
   CloseCircleFilledIcon,
-} from "tdesign-icons-vue-next";
+  ErrorCircleFilledIcon,
+} from 'tdesign-icons-vue-next'
+import { ref } from 'vue'
 
-const data = [];
-const statusNameListMap = {
-  0: { label: "审批通过", theme: "success", icon: <CheckCircleFilledIcon /> },
-  1: { label: "审批失败", theme: "danger", icon: <CloseCircleFilledIcon /> },
-  2: { label: "审批过期", theme: "warning", icon: <ErrorCircleFilledIcon /> },
-};
+interface TableDataRow {
+  index: number
+  applicant: string
+  status: number
+  channel: string
+  email: string
+  matters: string
+  time: number
+  createTime: string
+}
+
+const statusNameListMap: Record<number, { label: string, theme: string, icon: VNode }> = {
+  0: { label: '审批通过', theme: 'success', icon: <CheckCircleFilledIcon /> },
+  1: { label: '审批失败', theme: 'danger', icon: <CloseCircleFilledIcon /> },
+  2: { label: '审批过期', theme: 'warning', icon: <ErrorCircleFilledIcon /> },
+}
+
+const data = ref<TableDataRow[]>([])
 
 for (let i = 0; i < 5; i++) {
-  data.push({
+  data.value.push({
     index: i + 1,
-    applicant: ["贾明", "张三", "王芳"][i % 3],
+    applicant: ['贾明', '张三', '王芳'][i % 3],
     status: i % 3,
-    channel: ["电子签署", "纸质签署", "纸质签署"][i % 3],
-    email: ["w.cezkdudy@lhll.au", "r.nmgw@peurezgn.sl", "p.cumx@rampblpa.ru"][
+    channel: ['电子签署', '纸质签署', '纸质签署'][i % 3],
+    email: ['w.cezkdudy@lhll.au', 'r.nmgw@peurezgn.sl', 'p.cumx@rampblpa.ru'][
       i % 3
     ],
     matters: [
-      "宣传物料制作费用",
-      "algolia 服务报销",
-      "相关周边制作费",
-      "激励奖品快递费",
+      '宣传物料制作费用',
+      'algolia 服务报销',
+      '相关周边制作费',
+      '激励奖品快递费',
     ][i % 4],
     time: [2, 3, 1, 4][i % 4],
     createTime: [
-      "2022-01-01",
-      "2022-02-01",
-      "2022-03-01",
-      "2022-04-01",
-      "2022-05-01",
+      '2022-01-01',
+      '2022-02-01',
+      '2022-03-01',
+      '2022-04-01',
+      '2022-05-01',
     ][i % 4],
-  });
+  })
 }
 
-const columns = [
+const columns: PrimaryTableCol<TableDataRow>[] = [
   {
-    colKey: "applicant",
-    title: "申请人",
+    colKey: 'applicant',
+    title: '申请人',
     // type-slot-name 会被用于自定义单元格的插槽名称
-    cell: "type-slot-name",
+    cell: 'type-slot-name',
     width: 120,
   },
   {
-    title: "审批状态",
+    title: '审批状态',
     // 没有 cell 的情况下， platform 会被用作自定义单元格的插槽名称
-    colKey: "status",
+    colKey: 'status',
     width: 120,
   },
   {
-    colKey: "matters",
-    title: "申请事项",
+    colKey: 'matters',
+    title: '申请事项',
     // 使用 cell 方法自定义单元格：
-    cell: (h, { col, row }) => <div>{row[col.colKey]}</div>,
+    cell: (_h, { row }) => <div>{row.matters}</div>,
   },
   {
-    title: "邮箱地址",
-    colKey: "email",
+    title: '邮箱地址',
+    colKey: 'email',
     // render 即可渲染表头，也可以渲染单元格。但 cell 只能渲染单元格，title 只能渲染表头
-    render(h, context) {
-      const { type, row, col } = context;
-      if (type === "title") return "邮箱地址";
-      return <div>{row[col.colKey]}</div>;
+    render(_h, context) {
+      const { type, row } = context
+      if (type === 'title')
+        return '邮箱地址'
+      return <div>{row.email}</div>
     },
   },
-  { colKey: "createTime", title: "申请时间" },
-];
+  { colKey: 'createTime', title: '申请时间' },
+]
 
-const VITE_API_URL = ref(import.meta.env.VITE_API_URL);
+const VITE_API_URL = ref(import.meta.env.VITE_API_URL)
 </script>
 
 <template>
-  <div style="width: 100%">
-    <div class="container">
+  <div class="bg-coolGray">
+    <t-button theme="primary">
+      确定
+    </t-button>
+    <div class="bg-blue text-light">
       <p>VITE_API_URL: {{ VITE_API_URL }}</p>
-      <p class="text">postcss-nesting 语法支持已开启，使用方式请参考</p>
+      <p class="text">
+        postcss-nesting 语法支持已开启，使用方式请参考
+      </p>
     </div>
     <t-table :data="data" :columns="columns" row-key="property">
       <!-- 插槽方式 自定义单元格：cell 的值为插槽名称，参数有：{col, colIndex, row, rowIndex}  -->
@@ -89,7 +109,7 @@ const VITE_API_URL = ref(import.meta.env.VITE_API_URL);
       </template>
 
       <!-- 插槽方式 自定义单元格， colKey 的值默认为插槽名称  -->
-      <template #status="{ row }">
+      <template #status="{ row }: { row: TableDataRow }">
         <t-tag
           shape="round"
           :theme="statusNameListMap[row.status].theme"
@@ -103,13 +123,8 @@ const VITE_API_URL = ref(import.meta.env.VITE_API_URL);
       </template>
     </t-table>
   </div>
-  <t-button theme="primary">确定</t-button>
 </template>
 
 <style scoped>
-.container {
-  & > p {
-    color: red;
-  }
-}
+
 </style>
