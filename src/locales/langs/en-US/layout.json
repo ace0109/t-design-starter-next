@@ -1,0 +1,29 @@
+{
+  "setting": {
+    "copy": {
+      "title": "Copy configuration items"
+    },
+    "element": {
+      "menuAutoCollapsed": "Automatically fold the menu",
+      "showBreadcrumb": "Show bread crumbs",
+      "showFooter": "Show footer",
+      "showHeader": "Show top bar",
+      "title": "Element switch",
+      "useTagTabs": "Show multi-tabb tab pages"
+    },
+    "fixedSidebar": "Fixed sidebar",
+    "navigationLayout": "Navigation layout",
+    "sideMode": "Sidebar Mode",
+    "splitMenu": "Split menu (effective in mixing mode)",
+    "theme": {
+      "mode": "Theme mode",
+      "options": {
+        "auto": "Follow the system",
+        "dark": "Dark",
+        "light": "Bright"
+      }
+    },
+    "tips": "Please manually modify the configuration file after copying: /src/config/style.ts",
+    "title": "Page Settings"
+  }
+}

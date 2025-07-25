@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+/// <reference types="vite-svg-loader" />
 
 interface ViteTypeOptions {
   // 添加这行代码，你就可以将 ImportMetaEnv 的类型设为严格模式，
@@ -8,7 +9,7 @@ interface ViteTypeOptions {
 
 interface ImportMetaEnv {
   readonly VITE_BASE_URL: string
-  readonly VITE_IS_REQUEST_PROXY: boolean
+  readonly VITE_IS_REQUEST_PROXY: string
   readonly VITE_API_URL: string
   readonly VITE_API_URL_PREFIX: string
   // 更多环境变量...

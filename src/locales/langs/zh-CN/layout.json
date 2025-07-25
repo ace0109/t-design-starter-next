@@ -1,0 +1,29 @@
+{
+  "setting": {
+    "copy": {
+      "title": "复制配置项"
+    },
+    "element": {
+      "menuAutoCollapsed": "菜单自动折叠",
+      "showBreadcrumb": "显示面包屑",
+      "showFooter": "显示页脚",
+      "showHeader": "显示顶栏",
+      "title": "元素开关",
+      "useTagTabs": "显示多标签Tab页"
+    },
+    "fixedSidebar": "固定侧边栏",
+    "navigationLayout": "导航布局",
+    "sideMode": "侧边栏模式",
+    "splitMenu": "分割菜单（混合模式下有效）",
+    "theme": {
+      "mode": "主题模式",
+      "options": {
+        "auto": "跟随系统",
+        "dark": "深色",
+        "light": "明亮"
+      }
+    },
+    "tips": "请复制后手动修改配置文件: /src/config/style.ts",
+    "title": "页面设置"
+  }
+}

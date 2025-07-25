@@ -1,12 +1,18 @@
 import TDesign from 'tdesign-vue-next'
 import { createApp } from 'vue'
-import i18n from '@/locales'
 import App from './App.vue'
+import i18n from './locales'
+import router from './router'
+import { store } from './store'
 import 'virtual:uno.css'
 import 'tdesign-vue-next/es/style/index.css'
-import './style.css'
+import './style/variables.css'
+import './style/index.css'
+import './permission'
 
 const app = createApp(App)
+app.use(router)
+app.use(store)
 app.use(TDesign)
 app.use(i18n)
 

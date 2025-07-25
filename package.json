@@ -9,20 +9,29 @@
   },
   "scripts": {
     "preinstall": "node -e \"const v=process.version;const required='22';if(parseInt(v.slice(1))<parseInt(required)){console.error('Node.js version '+required+'+ is required. Current version: '+v);process.exit(1)}\"",
-    "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "dev": "vite --mode development",
+    "build:test": "vite build --mode test",
+    "build": "vue-tsc -b && vite build --mode release",
     "preview": "vite preview"
   },
   "dependencies": {
     "@vueuse/core": "^13.5.0",
+    "axios": "^1.11.0",
+    "nprogress": "^0.2.0",
+    "pinia": "^3.0.3",
+    "pinia-plugin-persistedstate": "^4.4.1",
+    "qs": "^6.14.0",
     "tdesign-icons-vue-next": "^0.3.6",
     "tdesign-vue-next": "^1.15.1",
     "vue": "^3.5.17",
-    "vue-i18n": "^11.1.11"
+    "vue-i18n": "^11.1.11",
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.18.0",
     "@types/node": "^24.1.0",
+    "@types/nprogress": "^0.2.3",
+    "@types/qs": "^6.14.0",
     "@unocss/eslint-plugin": "^66.3.3",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vitejs/plugin-vue-jsx": "^5.0.1",
@@ -34,6 +43,8 @@
     "typescript": "~5.8.3",
     "unocss": "^66.3.3",
     "vite": "^7.0.4",
+    "vite-plugin-vue-devtools": "^7.7.7",
+    "vite-svg-loader": "^5.1.0",
     "vue-tsc": "^2.2.12"
   }
 }

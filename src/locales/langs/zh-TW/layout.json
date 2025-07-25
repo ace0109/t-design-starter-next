@@ -1,0 +1,29 @@
+{
+  "setting": {
+    "copy": {
+      "title": "複製配置項"
+    },
+    "element": {
+      "menuAutoCollapsed": "菜單自動折疊",
+      "showBreadcrumb": "顯示麵包屑",
+      "showFooter": "顯示頁腳",
+      "showHeader": "顯示頂欄",
+      "title": "元素開關",
+      "useTagTabs": "顯示多標籤Tab頁"
+    },
+    "fixedSidebar": "固定側邊欄",
+    "navigationLayout": "導航佈局",
+    "sideMode": "側邊欄模式",
+    "splitMenu": "分割菜單（混合模式下有效）",
+    "theme": {
+      "mode": "主題模式",
+      "options": {
+        "auto": "跟隨系統",
+        "dark": "深色",
+        "light": "明亮"
+      }
+    },
+    "tips": "請複制後手動修改配置文件: /src/config/style.ts",
+    "title": "頁面設置"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "login": {
+    "input": {
+      "password": "请输入密码",
+      "username": "请输入账号"
+    },
+    "loginTitle": "登录到",
+    "required": {
+      "password": "请输入密码",
+      "username": "请输入账号"
+    },
+    "signIn": "登录"
+  }
+}

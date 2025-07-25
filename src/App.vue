@@ -1,51 +1,28 @@
 <script setup lang="tsx">
-import type { DropdownOption } from 'tdesign-vue-next'
-import { ref } from 'vue'
-import { langList, t } from './locales'
+import { computed } from 'vue'
 import { useLocale } from './locales/useLocale'
+import { useSettingStore } from './store'
 
-const VITE_API_URL = ref(import.meta.env.VITE_API_URL)
+const { getTDesignLocale, locale } = useLocale()
 
-const { changeLocale, getTDesignLocale } = useLocale()
+const store = useSettingStore()
 
-function changeLang(lang: string) {
-  changeLocale(lang)
-}
+const mode = computed(() => {
+  return store.displayMode
+})
 </script>
 
 <template>
   <t-config-provider :global-config="getTDesignLocale">
-    <div class="flex flex-col items-center justify-center h-screen gap-4">
-      <t-dropdown trigger="click">
-        <t-button theme="primary">
-          切换语言
-        </t-button>
-        <t-dropdown-menu>
-          <t-dropdown-item
-            v-for="(lang, index) in langList"
-            :key="index"
-            :value="lang.value"
-            @click="(options: DropdownOption) => changeLang(options.value as string)"
-          >
-            {{ lang.content }}
-          </t-dropdown-item>
-        </t-dropdown-menu>
-      </t-dropdown>
-      <t-button theme="primary">
-        当前语言：{{ t('common.lang') }}
-      </t-button>
-
-      <t-input class="w-200px" />
-
-      <p>产品Title: {{ t('common.title') }}</p>
-
-      <div class="bg-blue text-light">
-        <p>VITE_API_URL: {{ VITE_API_URL }}</p>
-        <p class="text">
-          postcss-nesting 语法支持已开启，使用方式请参考
-        </p>
-      </div>
-    </div>
+    <router-view v-slot="{ Component }" :key="locale">
+      <transition>
+        <keep-alive>
+          <div class="w-screen h-screen" :class="[mode]">
+            <component :is="Component" />
+          </div>
+        </keep-alive>
+      </transition>
+    </router-view>
   </t-config-provider>
 </template>
 

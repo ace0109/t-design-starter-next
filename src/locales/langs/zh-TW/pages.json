@@ -1,0 +1,14 @@
+{
+  "login": {
+    "input": {
+      "password": "請輸入密碼",
+      "username": "請輸入賬號"
+    },
+    "loginTitle": "登錄到",
+    "required": {
+      "password": "請輸入密碼",
+      "username": "請輸入賬號"
+    },
+    "signIn": "登入"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "login": {
+    "input": {
+      "password": "Please enter your password",
+      "username": "Please enter your account number"
+    },
+    "loginTitle": "Log in",
+    "required": {
+      "password": "Please enter your password",
+      "username": "Please enter your account number"
+    },
+    "signIn": "Log in"
+  }
+}
