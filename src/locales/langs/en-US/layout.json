@@ -1,4 +1,18 @@
 {
+  "header": {
+    "code": "Code Repository",
+    "help": "Help Documentation",
+    "setting": "System Settings",
+    "signOut": "Log out",
+    "user": "Personal Center"
+  },
+  "notice": {
+    "clear": "Clear",
+    "empty": "No notification yet",
+    "setRead": "Set as read",
+    "title": "Notification Center",
+    "viewAll": "View all"
+  },
   "setting": {
     "copy": {
       "title": "Copy configuration items"

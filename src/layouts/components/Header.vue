@@ -6,7 +6,6 @@ import { computed } from 'vue'
 
 import { useRouter } from 'vue-router'
 import LogoFull from '@/assets/assets-logo-full.svg?component'
-import { prefix } from '@/config/global'
 import { langList, t } from '@/locales'
 import { useLocale } from '@/locales/useLocale'
 import { getActive } from '@/router'
@@ -59,15 +58,15 @@ function toggleSettingPanel() {
 
 const active = computed(() => getActive())
 
-const layoutCls = computed(() => [`${prefix}-header-layout`])
+const layoutCls = computed(() => [`tdesign-starter-header-layout`])
 
 const menuCls = computed(() => {
   return [
     {
-      [`${prefix}-header-menu`]: !isFixed,
-      [`${prefix}-header-menu-fixed`]: isFixed,
-      [`${prefix}-header-menu-fixed-side`]: layout === 'side' && isFixed,
-      [`${prefix}-header-menu-fixed-side-compact`]: layout === 'side' && isFixed && isCompact,
+      [`tdesign-starter-header-menu`]: !isFixed,
+      'tdesign-starter-header-menu-fixed': isFixed,
+      'tdesign-starter-header-menu-fixed-side': layout === 'side' && isFixed,
+      'tdesign-starter-header-menu-fixed-side-compact': layout === 'side' && isFixed && isCompact,
     },
   ]
 })
@@ -107,12 +106,16 @@ function navToHelper() {
 
 <template>
   <div :class="layoutCls">
-    <t-head-menu :class="menuCls" :theme="menuTheme" expand-type="popup" :value="active">
+    <t-head-menu :class="menuCls" :theme="menuTheme" expand-type="popup" :value="active" class="!fixed top-0 z-1001">
       <template #logo>
-        <span v-if="showLogo" class="header-logo-container" @click="handleNav('/dashboard/index')">
-          <LogoFull class="t-logo" />
+        <span
+          v-if="showLogo"
+          class="header-logo-container inline-flex cursor-pointer"
+          @click="handleNav('/dashboard/index')"
+        >
+          <LogoFull class="t-logo h-full w-full" />
         </span>
-        <div v-else class="header-operate-left">
+        <div v-else class="header-operate-left flex items-center leading-0">
           <t-button theme="default" shape="square" variant="text" @click="changeCollapsed">
             <t-icon class="collapsed-icon" name="view-list" />
           </t-button>
@@ -123,7 +126,7 @@ function navToHelper() {
         <MenuContent class="header-menu" :nav-data="menu" />
       </template>
       <template #operations>
-        <div class="operations-container">
+        <div class="operations-container flex items-center">
           <!-- 搜索框 -->
           <search v-if="layout !== 'side'" :layout="layout" />
 
@@ -144,7 +147,7 @@ function navToHelper() {
             <t-button theme="default" shape="square" variant="text">
               <TranslateIcon />
             </t-button>
-            <t-dropdown>
+            <template #dropdown>
               <t-dropdown-item
                 v-for="(lang, index) in langList"
                 :key="index"
@@ -153,14 +156,20 @@ function navToHelper() {
               >
                 {{ lang.content }}
               </t-dropdown-item>
-            </t-dropdown>
+            </template>
           </t-dropdown>
           <t-dropdown :min-column-width="120" trigger="click">
             <template #dropdown>
-              <t-dropdown-item class="operations-dropdown-container-item" @click="handleNav('/user/index')">
+              <t-dropdown-item
+                class="operations-dropdown-container-item w-full flex items-center"
+                @click="handleNav('/user/index')"
+              >
                 <UserCircleIcon />{{ t('layout.header.user') }}
               </t-dropdown-item>
-              <t-dropdown-item class="operations-dropdown-container-item" @click="handleLogout">
+              <t-dropdown-item
+                class="operations-dropdown-container-item w-full flex items-center"
+                @click="handleLogout"
+              >
                 <PoweroffIcon />{{ t('layout.header.signOut') }}
               </t-dropdown-item>
             </template>
@@ -168,8 +177,8 @@ function navToHelper() {
               <template #icon>
                 <t-icon class="header-user-avatar" name="user-circle" />
               </template>
-              <div class="header-user-account">
-                {{ user.userInfo.name }}
+              <div class="header-user-account inline-flex items-center text-[var(--td-text-color-primary)]">
+                {{ user.userInfo.username }}
               </div>
               <template #suffix>
                 <ChevronDownIcon />
@@ -188,146 +197,96 @@ function navToHelper() {
 </template>
 
 <style scoped>
-.tdesign-starter-header {
-  &-menu-fixed {
-    position: fixed;
-    top: 0;
-    z-index: 1001;
-
-    :deep(.t-head-menu__inner) {
-      padding-right: var(--td-comp-margin-xl);
-    }
-
-    &-side {
-      left: 232px;
-      right: 0;
-      z-index: 10;
-      width: auto;
-      transition: all 0.3s;
-
-      &-compact {
-        left: 64px;
-      }
-    }
-  }
-
-  &-logo-container {
-    cursor: pointer;
-    display: inline-flex;
+.tdesign-starter-header-menu-fixed {
+  :deep(.t-head-menu__inner) {
+    padding-right: var(--td-comp-margin-xl);
   }
 }
-
+.tdesign-starter-header-menu-fixed-side {
+  left: 232px;
+  right: 0;
+  z-index: 10;
+  width: auto;
+  transition: all 0.3s;
+}
+.tdesign-starter-header-menu-fixed-side-compact {
+  left: 64px;
+}
 .header-menu {
   flex: 1 1 auto;
   display: inline-flex;
-
+}
+.header-menu {
   :deep(.t-menu__item) {
     min-width: unset;
   }
 }
-
 .operations-container {
-  display: flex;
-  align-items: center;
-
   .t-popup__reference {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
+}
+.operations-container {
   .t-button {
     margin-left: var(--td-comp-margin-l);
   }
 }
-
-.header-operate-left {
-  display: flex;
-  align-items: normal;
-  line-height: 0;
-}
-
 .header-logo-container {
   width: 184px;
   height: 26px;
   display: flex;
   margin-left: 24px;
   color: var(--td-text-color-primary);
-
-  .t-logo {
-    width: 100%;
-    height: 100%;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  &:hover {
+}
+.header-logo-container {
+  .t-logo:hover {
     cursor: pointer;
   }
 }
-
-.header-user-account {
-  display: inline-flex;
-  align-items: center;
-  color: var(--td-text-color-primary);
+.header-logo-container:hover {
+  cursor: pointer;
 }
-
 :deep(.t-head-menu__inner) {
   border-bottom: 1px solid var(--td-component-stroke);
 }
-
 .t-menu--light {
   .header-user-account {
     color: var(--td-text-color-primary);
   }
 }
-
 .t-menu--dark {
   .t-head-menu__inner {
     border-bottom: 1px solid var(--td-gray-color-10);
   }
-
+}
+.t-menu--dark {
   .header-user-account {
-    color: rgb(255 255 255 / 55%);
+    color: rgba(255, 255, 255, 0.55);
   }
 }
-
 .operations-dropdown-container-item {
-  width: 100%;
-  display: flex;
-  align-items: center;
-
   :deep(.t-dropdown__item-text) {
     display: flex;
     align-items: center;
   }
-
+}
+.operations-dropdown-container-item {
   .t-icon {
     font-size: var(--td-comp-size-xxxs);
     margin-right: var(--td-comp-margin-s);
   }
-
+}
+.operations-dropdown-container-item {
   :deep(.t-dropdown__item) {
     width: 100%;
     margin-bottom: 0;
   }
-
-  &:last-child {
-    :deep(.t-dropdown__item) {
-      margin-bottom: 8px;
-    }
-  }
 }
-</style>
-
-<!-- eslint-disable-next-line vue-scoped-css/enforce-style-type -->
-<style>
-.operations-dropdown-container-item {
-  .t-dropdown__item-text {
-    display: flex;
-    align-items: center;
+.operations-dropdown-container-item:last-child {
+  :deep(.t-dropdown__item) {
+    margin-bottom: 8px;
   }
 }
 </style>

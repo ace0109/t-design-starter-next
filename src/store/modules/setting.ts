@@ -1,17 +1,13 @@
-import type { TColorSeries } from '@/config/color'
 import type { ModeType } from '@/types/interface'
 import keys from 'lodash/keys'
 
 import { defineStore } from 'pinia'
-import { DARK_CHART_COLORS, LIGHT_CHART_COLORS } from '@/config/color'
 import STYLE_CONFIG from '@/config/style'
 import { store } from '@/store'
 
 const state: Record<string, any> = {
   ...STYLE_CONFIG,
   showSettingPanel: false,
-  colorList: {} as TColorSeries,
-  chartColors: LIGHT_CHART_COLORS,
 }
 
 export type TState = typeof state
@@ -47,8 +43,6 @@ export const useSettingStore = defineStore('setting', {
       const isDarkMode = theme === 'dark'
 
       document.documentElement.setAttribute('theme-mode', isDarkMode ? 'dark' : '')
-
-      this.chartColors = isDarkMode ? DARK_CHART_COLORS : LIGHT_CHART_COLORS
     },
     async changeSideMode(mode: ModeType) {
       const isDarkMode = mode === 'dark'

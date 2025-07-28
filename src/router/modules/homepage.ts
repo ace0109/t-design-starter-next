@@ -13,6 +13,7 @@ export default [
       title: {
         'zh-CN': '仪表盘',
         'en-US': 'Dashboard',
+        'zh-TW': '儀表盤',
       },
       icon: shallowRef(DashboardIcon),
       orderNo: 0,
@@ -26,6 +27,7 @@ export default [
           title: {
             'zh-CN': '概览仪表盘',
             'en-US': 'Overview',
+            'zh-TW': '概覽儀表盤',
           },
         },
       },

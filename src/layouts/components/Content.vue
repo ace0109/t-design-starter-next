@@ -1,7 +1,7 @@
 <template>
   <div v-if="!isRefreshing">
     <router-view v-if="!isFramePage" v-slot="{ Component }">
-      <transition name="fade" mode="out-in">
+      <transition name="fade" mode="out-in" class="fade-leave-active:transition-opacity fade-enter-active:transition-opacity fade-leave-active:ease-in-out fade-enter-active:ease-in-out fade-leave-active:duration-300 fade-enter-active:duration-300 fade-enter-from:opacity-0 fade-leave-to:opacity-0">
         <keep-alive :include="aliveViews">
           <component :is="Component" />
         </keep-alive>
@@ -58,13 +58,4 @@ const isFramePage = computed(() => {
 });
 </script>
 <style scoped>
-.fade-leave-active,
-.fade-enter-active {
-  transition: opacity @anim-duration-slow @anim-time-fn-easing;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
 </style>

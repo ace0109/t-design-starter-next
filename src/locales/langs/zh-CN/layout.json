@@ -1,4 +1,19 @@
 {
+  "header": {
+    "code": "代码仓库",
+    "help": "帮助文档",
+    "setting": "系统设置",
+    "signOut": "退出登录",
+    "user": "个人中心"
+  },
+  "notice": {
+    "clear": "清空",
+    "empty": "暂无通知",
+    "setRead": "设为已读",
+    "title": "通知中心",
+    "viewAll": "查看全部"
+  },
+  "searchPlaceholder": "请输入要搜索的内容",
   "setting": {
     "copy": {
       "title": "复制配置项"

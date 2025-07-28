@@ -1,4 +1,18 @@
 {
+  "header": {
+    "code": "代碼倉庫",
+    "help": "幫助文檔",
+    "setting": "系統設置",
+    "signOut": "退出登錄",
+    "user": "個人中心"
+  },
+  "notice": {
+    "clear": "清空",
+    "empty": "暫無通知",
+    "setRead": "設為已讀",
+    "title": "通知中心",
+    "viewAll": "查看全部"
+  },
   "setting": {
     "copy": {
       "title": "複製配置項"

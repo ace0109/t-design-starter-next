@@ -1,3 +1,25 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+
+import { t } from '@/locales'
+
+defineProps({
+  layout: {
+    type: String,
+    default: '',
+  },
+})
+
+const isSearchFocus = ref(false)
+const searchData = ref('')
+function changeSearchFocus(value: boolean) {
+  if (!value) {
+    searchData.value = ''
+  }
+  isSearchFocus.value = value
+}
+</script>
+
 <template>
   <div v-if="layout === 'side'" class="header-menu-search">
     <t-input
@@ -27,7 +49,7 @@
       v-model="searchData"
       class="header-search"
       :class="[{ 'width-zero': !isSearchFocus }]"
-      placeholder="输入要搜索内容"
+      :placeholder="t('layout.searchPlaceholder')"
       :autofocus="isSearchFocus"
       @blur="changeSearchFocus(false)"
     >
@@ -37,27 +59,7 @@
     </t-input>
   </div>
 </template>
-<script setup lang="ts">
-import { ref } from 'vue';
 
-import { t } from '@/locales';
-
-defineProps({
-  layout: {
-    type: String,
-    default: '',
-  },
-});
-
-const isSearchFocus = ref(false);
-const searchData = ref('');
-const changeSearchFocus = (value: boolean) => {
-  if (!value) {
-    searchData.value = '';
-  }
-  isSearchFocus.value = value;
-};
-</script>
 <style scoped>
 .header-menu-search {
   display: flex;
@@ -76,19 +78,11 @@ const changeSearchFocus = (value: boolean) => {
       border: none;
       outline: none;
       box-shadow: none;
-      transition: background @anim-duration-base linear;
+      transition: all var(--anim-duration-base) linear;
 
       .t-input__inner {
-        transition: background @anim-duration-base linear;
-        background: none;
-      }
-
-      &:hover {
-        background: var(--td-bg-color-secondarycontainer);
-
-        .t-input__inner {
-          background: var(--td-bg-color-secondarycontainer);
-        }
+        transition: all var(--anim-duration-base) linear;
+        all: none;
       }
     }
   }
@@ -96,7 +90,7 @@ const changeSearchFocus = (value: boolean) => {
 
 .t-button {
   margin: 0 8px;
-  transition: opacity @anim-duration-base @anim-time-fn-easing;
+  transition: opacity var(--anim-duration-base) var(--anim-time-fn-easing);
 
   .t-icon {
     font-size: 20px;
@@ -117,7 +111,7 @@ const changeSearchFocus = (value: boolean) => {
 
   .header-search {
     width: 200px;
-    transition: width @anim-duration-base @anim-time-fn-easing;
+    transition: width var(--anim-duration-base) var(--anim-time-fn-easing);
 
     :deep(.t-input) {
       border: 0;

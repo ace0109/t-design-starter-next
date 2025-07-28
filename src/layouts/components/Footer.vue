@@ -1,13 +1,10 @@
-<template>
-  <div :class="`${prefix}-footer`">Copyright © 2021-{{ new Date().getFullYear() }} Tencent. All Rights Reserved</div>
-</template>
 <script setup lang="ts">
-import { prefix } from '@/config/global';
 </script>
-<style scoped>
-.tdesign-starter-footer {
-  color: var(--td-text-color-placeholder);
-  line-height: 20px;
-  text-align: center;
-}
-</style>
+
+<template>
+  <div class="text-center leading-20px text-[var(--td-text-color-placeholder)]">
+    Copyright © 2021-{{ new Date().getFullYear() }} Tencent. All Rights Reserved
+  </div>
+</template>
+
+<style scoped></style>

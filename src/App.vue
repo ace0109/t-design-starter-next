@@ -17,7 +17,7 @@ const mode = computed(() => {
     <router-view v-slot="{ Component }" :key="locale">
       <transition>
         <keep-alive>
-          <div class="w-screen h-screen" :class="[mode]">
+          <div :class="[mode]">
             <component :is="Component" />
           </div>
         </keep-alive>

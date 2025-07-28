@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { MenuRoute } from '@/types/interface'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 
@@ -15,11 +16,11 @@ const headerMenu = computed(() => {
       return menuRouters.value.map(menu => ({
         ...menu,
         children: [],
-      }))
+      })) as MenuRoute[]
     }
     return []
   }
-  return menuRouters.value
+  return menuRouters.value as MenuRoute[]
 })
 </script>
 
