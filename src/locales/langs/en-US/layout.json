@@ -39,5 +39,11 @@
     },
     "tips": "Please manually modify the configuration file after copying: /src/config/style.ts",
     "title": "Page Settings"
+  },
+  "tagTabs": {
+    "closeLeft": "Close the left side",
+    "closeOther": "Close Others",
+    "closeRight": "Close the right side",
+    "refresh": "refresh"
   }
 }

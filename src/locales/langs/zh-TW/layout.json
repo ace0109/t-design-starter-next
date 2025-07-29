@@ -39,5 +39,11 @@
     },
     "tips": "請複制後手動修改配置文件: /src/config/style.ts",
     "title": "頁面設置"
+  },
+  "tagTabs": {
+    "closeLeft": "關閉左側",
+    "closeOther": "關閉其它",
+    "closeRight": "關閉右側",
+    "refresh": "重新整理"
   }
 }

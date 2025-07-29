@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div class="text-center leading-20px text-[var(--td-text-color-placeholder)]">
+  <div class="flex items-center justify-center text-secondary h-40px">
     Copyright © 2021-{{ new Date().getFullYear() }} Tencent. All Rights Reserved
   </div>
 </template>

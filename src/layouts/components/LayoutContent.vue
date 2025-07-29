@@ -103,14 +103,13 @@ function handleDragend(options: { currentIndex: number, targetIndex: number }) {
 </script>
 
 <template>
-  <t-layout class="tdesign-starter-layouth-[calc(100vh - var(--td-comp-size-xxxl))] overflow-y-scroll">
+  <t-layout class="tdesign-starter-layout relative h-[calc(100vh_-_var(--td-comp-size-xxxl))]">
     <t-tabs
       v-if="settingStore.isUseTabsRouter"
       drag-sort
       theme="card"
-      class="tdesign-starter-layout-tabs-nav max-w-full fixed overflow-visible z-100"
+      class="tdesign-starter-layout-tabs-nav w-full absolute overflow-visible z-1"
       :value="$route.path"
-      :style="{ position: 'sticky', top: 0, width: '100%' }"
       @change="(value) => handleChangeCurrentTab(value as string)"
       @remove="handleRemove"
       @drag-sort="handleDragend"
@@ -164,11 +163,11 @@ function handleDragend(options: { currentIndex: number, targetIndex: number }) {
         </template>
       </t-tab-panel>
     </t-tabs>
-    <t-content class="tdesign-starter-content-layout p-[var(--td-comp-paddingTB-xl)] p-[var(--td-comp-paddingLR-xl)]">
+    <t-content class="tdesign-starter-content-layout h-full overflow-y-scroll flex-1 p-[16px]" :class="{ 'mt-[48px]': settingStore.isUseTabsRouter }">
       <LBreadcrumb v-if="settingStore.showBreadcrumb" />
       <LContent />
     </t-content>
-    <t-footer v-if="settingStore.showFooter" class="tdesign-starter-footer-layout p-0 mb-[var(--td-comp-margin-xxl)]">
+    <t-footer v-if="settingStore.showFooter" class="tdesign-starter-footer-layout p-0">
       <LFooter />
     </t-footer>
   </t-layout>
