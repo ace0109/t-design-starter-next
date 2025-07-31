@@ -1,6 +1,7 @@
 import type { TRouterInfo, TTabRouterType } from '@/types/interface'
 
 import { defineStore } from 'pinia'
+import { CACHE_PREFIX } from '@/config/global'
 import { store } from '@/store'
 
 const homeRoute: Array<TRouterInfo> = [
@@ -80,7 +81,9 @@ export const useTabsRouterStore = defineStore('tabsRouter', {
       newRoutes?.forEach((route: TRouterInfo) => this.appendTabRouterList(route))
     },
   },
-  persist: true,
+  persist: {
+    key: `${CACHE_PREFIX}tabsRouter`,
+  },
 })
 
 export function getTabsRouterStore() {
