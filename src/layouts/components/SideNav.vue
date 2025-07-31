@@ -87,7 +87,7 @@ const menuCls = computed(() => {
       'z-1': !showLogo,
       'relative': !isFixed,
       'fixed': isFixed,
-      'top-56px': layout === 'mix' && isFixed,
+      'top-56px !h-[calc(100vh_-_56px)]': layout === 'mix' && isFixed,
     },
   ]
 })
@@ -127,7 +127,6 @@ function getLogo() {
   <div :class="sideNavCls" class="h-full flex flex-col">
     <t-menu
       :class="menuCls"
-      class="!h-[calc(100vh_-_56px)]"
       :theme="theme"
       :value="active"
       :collapsed="collapsed"
@@ -138,10 +137,10 @@ function getLogo() {
       <template #logo>
         <span
           v-if="showLogo"
-          class="w-full flex items-center justify-center"
+          class="header-logo-container inline-flex cursor-pointer"
           @click="goHome"
         >
-          <component :is="getLogo()" class="dark:text-white" />
+          <component :is="getLogo()" class="t-logo h-full w-full" />
         </span>
       </template>
       <MenuContent :nav-data="menu" />
@@ -153,4 +152,20 @@ function getLogo() {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.header-logo-container {
+  width: 184px;
+  height: 26px;
+  display: flex;
+  margin-left: 24px;
+  color: var(--td-text-color-primary);
+}
+.header-logo-container {
+  .t-logo:hover {
+    cursor: pointer;
+  }
+}
+.header-logo-container:hover {
+  cursor: pointer;
+}
+</style>

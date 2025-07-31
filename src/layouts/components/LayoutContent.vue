@@ -103,7 +103,7 @@ function handleDragend(options: { currentIndex: number, targetIndex: number }) {
 </script>
 
 <template>
-  <t-layout class="tdesign-starter-layout relative h-[calc(100vh_-_var(--td-comp-size-xxxl))] flex-1 w-[1%]">
+  <t-layout class="tdesign-starter-layout relative h-[calc(100vh_-_var(--td-comp-size-xxxl))]" :class="{ 'flex-1 w-[1%]': settingStore.$state.sideMode === 'mix' }">
     <t-tabs
       v-if="settingStore.isUseTabsRouter"
       drag-sort
