@@ -48,7 +48,7 @@ watch(
     <template v-if="setting.layout.value === 'side'">
       <t-layout key="side" :class="mainLayoutCls" class="h-screen">
         <t-aside><LayoutSideNav /></t-aside>
-        <t-layout>
+        <t-layout class="flex-1 w-[1%]">
           <t-header><LayoutHeader /></t-header>
           <t-content><LayoutContent /></t-content>
         </t-layout>

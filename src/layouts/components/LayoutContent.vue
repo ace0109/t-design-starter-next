@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import type { PopupVisibleChangeContext } from 'tdesign-vue-next'
 import type { TRouterInfo, TTabRemoveOptions } from '@/types/interface'
+import { storeToRefs } from 'pinia'
 import { computed, nextTick, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { t } from '@/locales'
 import { useLocale } from '@/locales/useLocale'
-import { useSettingStore, useTabsRouterStore } from '@/store'
 
+import { useSettingStore, useTabsRouterStore } from '@/store'
 import LBreadcrumb from './Breadcrumb.vue'
 import LContent from './Content.vue'
 import LFooter from './Footer.vue'
@@ -15,6 +16,7 @@ const route = useRoute()
 const router = useRouter()
 
 const settingStore = useSettingStore()
+const setting = storeToRefs(settingStore)
 const tabsRouterStore = useTabsRouterStore()
 const tabRouters = computed(() => tabsRouterStore.tabRouters.filter(route => route.isAlive || route.isHome))
 const activeTabPath = ref<string | null>(null)
@@ -103,7 +105,7 @@ function handleDragend(options: { currentIndex: number, targetIndex: number }) {
 </script>
 
 <template>
-  <t-layout class="tdesign-starter-layout relative h-[calc(100vh_-_var(--td-comp-size-xxxl))]" :class="{ 'flex-1 w-[1%]': settingStore.$state.sideMode === 'mix' }">
+  <t-layout class="tdesign-starter-layout relative h-[calc(100vh_-_var(--td-comp-size-xxxl))]" :class="{ 'flex-1 w-[1%]': setting.layout.value === 'mix' }">
     <t-tabs
       v-if="settingStore.isUseTabsRouter"
       drag-sort
