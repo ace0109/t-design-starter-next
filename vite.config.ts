@@ -24,7 +24,7 @@ export default defineConfig(({ mode }) => {
       sourcemap: true,
     },
     server: {
-      port: 3001,
+      port: 3333,
       host: '0.0.0.0',
       proxy: {
         [VITE_API_URL_PREFIX]: {

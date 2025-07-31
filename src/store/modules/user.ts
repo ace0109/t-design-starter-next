@@ -21,7 +21,6 @@ export const useUserStore = defineStore('user', {
   actions: {
     async login(loginParams: IUserLoginParams) {
       const res = await Login(loginParams)
-      console.log(res)
 
       this.token = res.data
     },
