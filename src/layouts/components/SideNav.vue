@@ -140,7 +140,7 @@ function getLogo() {
           class="header-logo-container inline-flex cursor-pointer"
           @click="goHome"
         >
-          <component :is="getLogo()" class="t-logo h-full w-full" />
+          <component :is="getLogo()" class="h-full t-logo w-full" />
         </span>
       </template>
       <MenuContent :nav-data="menu" />
