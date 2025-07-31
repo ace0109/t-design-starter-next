@@ -1,2 +1,2 @@
 // 缓存前缀
-export const CACHE_PREFIX = 't-design-starter-next_'
+export const CACHE_PREFIX = 't-design-starter-next'

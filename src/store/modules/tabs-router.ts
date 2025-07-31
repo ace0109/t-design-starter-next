@@ -82,7 +82,7 @@ export const useTabsRouterStore = defineStore('tabsRouter', {
     },
   },
   persist: {
-    key: `${CACHE_PREFIX}tabsRouter`,
+    key: `${CACHE_PREFIX}_tabsRouter`,
   },
 })
 
