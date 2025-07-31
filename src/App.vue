@@ -14,15 +14,7 @@ const mode = computed(() => {
 
 <template>
   <t-config-provider :global-config="getTDesignLocale">
-    <router-view v-slot="{ Component }" :key="locale">
-      <transition>
-        <keep-alive>
-          <div :class="[mode]">
-            <component :is="Component" />
-          </div>
-        </keep-alive>
-      </transition>
-    </router-view>
+    <router-view :key="locale" :class="[mode]" />
   </t-config-provider>
 </template>
 

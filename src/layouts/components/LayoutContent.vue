@@ -103,7 +103,7 @@ function handleDragend(options: { currentIndex: number, targetIndex: number }) {
 </script>
 
 <template>
-  <t-layout class="tdesign-starter-layout relative h-[calc(100vh_-_var(--td-comp-size-xxxl))]">
+  <t-layout class="tdesign-starter-layout relative h-[calc(100vh_-_var(--td-comp-size-xxxl))] flex-1 w-[1%]">
     <t-tabs
       v-if="settingStore.isUseTabsRouter"
       drag-sort
@@ -163,7 +163,7 @@ function handleDragend(options: { currentIndex: number, targetIndex: number }) {
         </template>
       </t-tab-panel>
     </t-tabs>
-    <t-content class="tdesign-starter-content-layout h-full overflow-y-scroll flex-1 p-[16px]" :class="{ 'mt-[48px]': settingStore.isUseTabsRouter }">
+    <t-content class="tdesign-starter-content-layout h-full overflow-y-scroll p-[16px]" :class="{ 'mt-[48px]': settingStore.isUseTabsRouter }">
       <LBreadcrumb v-if="settingStore.showBreadcrumb" />
       <LContent />
     </t-content>

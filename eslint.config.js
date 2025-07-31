@@ -20,5 +20,6 @@ export default antfu({
         ignorePattern: '^_',
       },
     ],
+    'vue/no-multiple-template-root': 'error',
   },
 })

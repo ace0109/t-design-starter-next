@@ -45,9 +45,9 @@ const isFramePage = computed(() => {
 </script>
 
 <template>
-  <div v-if="!isRefreshing">
+  <div v-if="!isRefreshing" class="h-full">
     <router-view v-if="!isFramePage" v-slot="{ Component }">
-      <transition name="fade" mode="out-in" class="fade-leave-active:transition-opacity fade-enter-active:transition-opacity fade-leave-active:ease-in-out fade-enter-active:ease-in-out fade-leave-active:duration-300 fade-enter-active:duration-300 fade-enter-from:opacity-0 fade-leave-to:opacity-0">
+      <transition name="fade" mode="out-in" class="h-full fade-leave-active:transition-opacity fade-enter-active:transition-opacity fade-leave-active:ease-in-out fade-enter-active:ease-in-out fade-leave-active:duration-300 fade-enter-active:duration-300 fade-enter-from:opacity-0 fade-leave-to:opacity-0">
         <keep-alive :include="aliveViews">
           <component :is="Component" />
         </keep-alive>
